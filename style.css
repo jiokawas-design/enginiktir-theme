@@ -19,7 +19,7 @@
   --border:     #d6d2cc;
   --border-hover: #bfbab3;
   --bg-card:    #ffffff;
-  --bg-page:    #f7f5f2;
+  --bg-page:    #ffffff;
   --link-gold:  #b8860b;
   --radius-btn: 16px;
 }
@@ -50,7 +50,7 @@ body {
 .topbar {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
-  padding: 26px 0;
+  padding: 10px 0;
 }
 
 .topbar-inner {
@@ -113,7 +113,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 9px 12px;
+  padding: 9px 10px;
   border-radius: 8px;
   background: transparent;
   border: 1.5px solid var(--border);
@@ -143,6 +143,10 @@ body {
 
 .cta-outline .icon svg {
   display: block;
+}
+
+.cta-outline .text {
+  display: none;
 }
 
 .cta-phone {
@@ -222,6 +226,8 @@ body {
   opacity: 0.5;
   transition: transform 0.25s ease, opacity 0.25s ease;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
 .nav-list li.has-dropdown:hover .nav-chevron {
@@ -280,7 +286,7 @@ body {
 
 .hero {
   position: relative;
-  height: 340px;
+  height: 300px;
   background:
     linear-gradient(to right, rgba(15, 25, 50, 0.82) 42%, rgba(15, 25, 50, 0.1) 100%),
     url('https://enginiktir.de/wp-content/uploads/haende-herz.jpg') center center / cover no-repeat;
@@ -327,7 +333,7 @@ body {
    ===================================================== */
 
 .main-wrapper {
-  max-width: 1200px;
+  max-width: 1236px;
   margin: 32px auto 48px;
   padding: 0 24px;
   display: grid;
@@ -427,21 +433,6 @@ body {
   border-radius: 8px;
   padding: 20px 20px 20px 16px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.sidebar-card-icon {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
 }
 
 .sidebar-card-body h3 {
@@ -450,6 +441,21 @@ body {
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-card-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
 }
 
 .sidebar-card-body p,
@@ -485,7 +491,7 @@ body {
    ===================================================== */
 
 .site-footer {
-  background: var(--navy);
+  background: #1a1a1a;
   color: rgba(255, 255, 255, 0.75);
   padding: 40px 24px 32px;
 }
@@ -708,7 +714,7 @@ body {
 .drawer-link {
   display: block;
   padding: 14px 28px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   text-decoration: none;
   font-size: 12px;
   font-weight: 700;
@@ -722,28 +728,37 @@ body {
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* Parent button (has submenu) */
+/* Row with link + chevron button for items with submenus */
+.drawer-parent-row {
+  display: flex;
+  align-items: center;
+}
+
+.drawer-parent-row .drawer-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chevron-only button */
 .drawer-parent {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 14px 28px;
+  justify-content: center;
+  padding: 14px 20px;
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.2s;
+  flex-shrink: 0;
 }
 
 .drawer-parent:hover {
   color: var(--gold-light);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 .chevron {
@@ -768,7 +783,7 @@ body {
 .drawer-sub li a {
   display: block;
   padding: 11px 28px 11px 36px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
   text-decoration: none;
   font-size: 12px;
   font-weight: 500;
@@ -854,10 +869,6 @@ body {
     border-radius: 6px;
   }
 
-  /* Show button text on mobile again */
-  .cta-outline .text {
-    display: inline;
-  }
 }
 
 @media (max-width: 600px) {
