@@ -25,7 +25,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   color: var(--text);
   background: var(--bg-page);
   font-size: 16px;
@@ -41,6 +41,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 150;
+  border-top: 3px solid #b58a3c;
 }
 
 /* =====================================================
@@ -49,12 +50,12 @@ body {
 
 .topbar {
   background: #ffffff;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #e8e0d5;
   padding: 10px 0;
 }
 
 .topbar-inner {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -72,7 +73,7 @@ body {
 }
 
 .topbar-logo-text {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--text);
@@ -85,18 +86,16 @@ body {
 
 /* Mobile logo styles (only used at mobile breakpoint) */
 .logo-name {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 17px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 15px;
   font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
   color: var(--text);
 }
 
-.logo-sub {
-  font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-light);
-}
 
 .topbar-actions {
   display: flex;
@@ -112,70 +111,58 @@ body {
 .cta-outline {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 10px;
-  border-radius: 8px;
   background: transparent;
-  border: 1.5px solid var(--border);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-mid);
+  border: none;
+  padding: 4px;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  font-family: 'Lato', sans-serif;
+  transition: opacity 0.2s ease;
 }
 
 .cta-outline:hover {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: var(--border-hover);
-  transform: translateY(-1px);
+  opacity: 0.75;
 }
 
 .cta-outline .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-light);
   flex-shrink: 0;
-}
-
-.cta-outline .icon svg {
-  display: block;
 }
 
 .cta-outline .text {
   display: none;
 }
 
-.cta-phone {
-  background: #aa0108;
-  border-color: #aa0108;
-  color: #ffffff;
+.btn-icon {
+  display: block;
 }
 
-.cta-phone:hover {
-  background: #8c0106;
-  border-color: #8c0106;
-  color: #ffffff;
+.btn-icon-gold {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(50%) saturate(600%) hue-rotate(5deg) brightness(0.9);
 }
 
-.cta-phone .icon {
-  color: #ffffff;
+.btn-icon-dark {
+  filter: brightness(0);
 }
+
+.card-icon-img {
+  display: block;
+  filter: invert(1) brightness(10);
+}
+
 
 /* =====================================================
    MAIN NAVIGATION — dark bar (unchanged)
    ===================================================== */
 
 .main-nav {
-  background: #111820;
+  background: #262626;
   padding: 0;
 }
 
 .nav-list {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 24px;
   list-style: none;
@@ -188,28 +175,22 @@ body {
 
 .nav-list li a {
   display: block;
-  padding: 13px 6px;
+  padding: 10px 6px 10px 4px;
   color: #ffffff;
   text-decoration: none;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  text-transform: none;
   transition: color 0.2s;
   white-space: nowrap;
 }
 
 .nav-list li a:hover {
-  color: var(--gold-light);
+  color: #e3b967;
+  opacity: 1;
 }
 
-.nav-list .sep {
-  color: #444;
-  padding: 0;
-  font-size: 11px;
-  user-select: none;
-  flex-shrink: 0;
-}
 
 /* Parent item positioning */
 .nav-list li.has-dropdown {
@@ -240,14 +221,11 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 220px;
-  background: #1a2030;
-  border-top: 2px solid var(--gold);
+  min-width: 180px;
   list-style: none;
-  padding: 6px 0;
+  padding: 0;
   z-index: 100;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   /* Hidden state */
   opacity: 0;
@@ -265,19 +243,20 @@ body {
 .nav-dropdown li a {
   display: block;
   padding: 10px 18px;
-  color: rgba(255, 255, 255, 0.75);
+  background: #f7f4ec;
+  color: #262626;
   text-decoration: none;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  text-transform: none;
   white-space: nowrap;
   transition: color 0.18s, background 0.18s;
 }
 
 .nav-dropdown li a:hover {
-  color: var(--gold-light);
-  background: rgba(255, 255, 255, 0.05);
+  background: #262626;
+  color: #ffffff;
 }
 
 /* =====================================================
@@ -289,20 +268,20 @@ body {
   height: 300px;
   background:
     linear-gradient(to right, rgba(15, 25, 50, 0.82) 42%, rgba(15, 25, 50, 0.1) 100%),
-    url('https://enginiktir.de/wp-content/uploads/haende-herz.jpg') center center / cover no-repeat;
+    url('images/hndeFin1.webp') center center / cover no-repeat;
   display: flex;
   align-items: center;
 }
 
 .hero-content {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 48px;
   width: 100%;
 }
 
 .hero-content h1 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 38px;
   font-weight: 400;
   color: #ffffff;
@@ -333,12 +312,12 @@ body {
    ===================================================== */
 
 .main-wrapper {
-  max-width: 1236px;
+  max-width: 1140px;
   margin: 32px auto 48px;
-  padding: 0 24px;
+  padding: 0 40px;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 28px;
+  grid-template-columns: 70% 1fr;
+  gap: 30px;
   align-items: start;
 }
 
@@ -351,7 +330,7 @@ body {
 }
 
 .section-heading {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 26px;
   font-weight: 400;
   color: var(--navy);
@@ -436,7 +415,7 @@ body {
 }
 
 .sidebar-card-body h3 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: var(--navy);
@@ -491,7 +470,7 @@ body {
    ===================================================== */
 
 .site-footer {
-  background: #1a1a1a;
+  background: #262626;
   color: rgba(255, 255, 255, 0.75);
   padding: 40px 24px 32px;
 }
@@ -536,7 +515,7 @@ body {
 
 /* Tagline */
 .footer-tagline {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 15px;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.65;
@@ -814,11 +793,6 @@ body {
     gap: 6px;
   }
 
-  .cta-outline {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-
   .cta-outline .text {
     display: none;
   }
@@ -841,32 +815,26 @@ body {
   .logo-desktop { display: none; }
   .logo-mobile {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
   }
 
   /* Topbar: center layout */
   .topbar {
-    padding: 14px 0 12px;
+    padding: 4px 0;
   }
 
   .topbar-inner {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    text-align: center;
+    justify-content: center;
+    gap: 4px;
   }
 
   .topbar-actions {
     justify-content: center;
     gap: 8px;
-  }
-
-  .cta-outline {
-    padding: 7px 14px;
-    font-size: 12px;
-    border-radius: 6px;
   }
 
 }
@@ -878,5 +846,11 @@ body {
 
   .content-col {
     padding: 24px 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .logo-name {
+    font-size: 9px;
   }
 }
