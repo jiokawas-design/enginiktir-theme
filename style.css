@@ -38,10 +38,13 @@ body {
    ===================================================== */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 150;
   border-top: 3px solid #b58a3c;
+  transition: transform 0.32s ease;
 }
 
 /* =====================================================
@@ -312,7 +315,7 @@ body {
    ===================================================== */
 
 .main-wrapper {
-  max-width: 1140px;
+  max-width: 1127px;
   margin: 32px auto 48px;
   padding: 0 40px;
   display: grid;
