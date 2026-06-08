@@ -96,6 +96,7 @@ body {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1px;
+  text-shadow: 0.8px 0 0 var(--text), -0.8px 0 0 var(--text);
   line-height: 1.35;
   text-align: center;
   max-width: 360px;
@@ -976,6 +977,12 @@ body {
 }
 
 @media (max-width: 1024px) {
+  body {
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
   .nav-list {
     display: none;
   }
@@ -1012,6 +1019,11 @@ body {
     margin-right: 0;
   }
 
+  .hero-content h1,
+  .section-heading {
+    font-weight: 500;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -1023,4 +1035,3 @@ body {
     padding: 24px 20px;
   }
 }
-
