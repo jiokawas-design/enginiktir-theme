@@ -407,6 +407,74 @@ body {
   line-height: 1.7;
 }
 
+.content-link {
+  color: #1a6fa8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.content-link:hover {
+  color: #145a8a;
+}
+
+.content-blockquote {
+  border-left: 4px solid #b58a3c;
+  margin: 20px 0;
+  padding: 6px 0 6px 18px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #b58a3c;
+  color: #ffffff;
+  padding: 7px 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background 0.2s;
+}
+.btn-primary:hover {
+  background: #9a7430;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #2a7a8a;
+  border: 2px solid #2a7a8a;
+  padding: 5px 16px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  background: #2a7a8a;
+  color: #ffffff;
+}
+
+.content-list {
+  margin: 0 0 16px 20px;
+  padding: 0;
+  line-height: 1.8;
+}
+.content-list li {
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
 .therapist-photo {
   margin: 28px 0 16px;
   text-align: center;
