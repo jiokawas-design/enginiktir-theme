@@ -251,6 +251,7 @@ body {
   padding: 0;
   z-index: 100;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-top: 3px solid #b58a3c;
 
   /* Hidden state */
   opacity: 0;
