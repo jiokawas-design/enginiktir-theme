@@ -93,7 +93,7 @@ body {
 /* Mobile logo styles (only used at mobile breakpoint) */
 .logo-name {
   font-family: 'Comfortaa', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1px;
   text-shadow: 0.8px 0 0 var(--text), -0.8px 0 0 var(--text);
@@ -978,6 +978,7 @@ body {
 
 @media (max-width: 1024px) {
   body {
+    font-size: 17px;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -1024,11 +1025,23 @@ body {
     font-weight: 500;
   }
 
+  .logo-name {
+    font-size: 14px;
+  }
+
 }
 
 @media (max-width: 600px) {
   .hero {
     height: 280px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .section-heading {
+    font-size: 28px;
   }
 
   .content-col {
