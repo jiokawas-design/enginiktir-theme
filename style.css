@@ -1033,7 +1033,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: 0 12px;
+    padding: 0;
   }
 
   .topbar-actions {
@@ -1048,7 +1048,8 @@ body {
   }
 
   .logo-name {
-    font-size: 13px;
+    font-size: 12px;
+    letter-spacing: 0;
   }
 
 }
