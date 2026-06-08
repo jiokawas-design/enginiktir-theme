@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260608i" />
+  <link rel="stylesheet" href="style.css?v=20260608j" />
 </head>
 <body>
 
@@ -430,7 +430,8 @@
 
         if (Math.abs(delta) < 6) return;
 
-        var topbarBottom = topbar.offsetTop + topbar.offsetHeight;
+        var borderTop = parseInt(window.getComputedStyle(header).borderTopWidth) || 0;
+        var topbarBottom = topbar.offsetTop + topbar.offsetHeight + borderTop;
         var navHeight = Math.max(0, header.offsetHeight - topbarBottom);
         if (delta > 0 && y > topbarBottom && !hidden) {
           header.style.transform = 'translateY(-' + topbarBottom + 'px)';
