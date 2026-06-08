@@ -390,8 +390,9 @@
 
         if (Math.abs(delta) < 6) return;
 
-        if (delta > 0 && y > topbar.offsetHeight && !hidden) {
-          header.style.transform = 'translateY(-' + topbar.offsetHeight + 'px)';
+        var topbarBottom = topbar.offsetTop + topbar.offsetHeight;
+        if (delta > 0 && y > topbarBottom && !hidden) {
+          header.style.transform = 'translateY(-' + topbarBottom + 'px)';
           hidden = true;
         } else if (delta < 0 && hidden) {
           header.style.transform = 'translateY(0)';
