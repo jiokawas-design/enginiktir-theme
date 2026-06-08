@@ -443,15 +443,14 @@ body {
   letter-spacing: 0.3px;
   transition: background 0.2s;
 }
-.btn-primary:hover {
-  background: #9a7430;
-}
+.btn-primary:hover { background: #9a7430; }
+.btn-primary:active { color: #000000; }
 
 .btn-secondary {
   display: inline-block;
   background: transparent;
-  color: #2a7a8a;
-  border: 2px solid #2a7a8a;
+  color: #b58a3c;
+  border: 2px solid #b58a3c;
   padding: 5px 16px;
   border-radius: 3px;
   text-decoration: none;
@@ -461,9 +460,10 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 .btn-secondary:hover {
-  background: #2a7a8a;
+  background: #b58a3c;
   color: #ffffff;
 }
+.btn-secondary:active { color: #000000; }
 
 .content-list {
   margin: 0 0 16px 20px;
@@ -473,6 +473,58 @@ body {
 .content-list li {
   margin-bottom: 4px;
   color: var(--text);
+}
+.content-list li::marker {
+  color: #b58a3c;
+}
+
+.content-list--ordered {
+  list-style-type: decimal;
+  font-family: 'Corbel', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+.content-verse {
+  font-family: 'Corbel', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.form-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.content-input {
+  font-family: 'Corbel', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  padding: 7px 12px;
+  border: 1px solid #d0cbc4;
+  border-radius: 3px;
+  color: var(--text);
+  outline: none;
+  max-width: 300px;
+}
+.content-input:focus {
+  border-color: #b58a3c;
+}
+
+.content-radio-label {
+  font-family: 'Corbel', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  cursor: pointer;
+}
+.content-radio {
+  accent-color: #b58a3c;
+  width: 16px;
+  height: 16px;
 }
 
 .therapist-photo {
