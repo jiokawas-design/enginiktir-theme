@@ -978,9 +978,15 @@ body {
 
 @media (max-width: 1024px) {
   .main-wrapper {
-    grid-template-columns: 1fr;
+    display: block;
     padding: 0 16px;
     margin-top: 15px;
+  }
+
+  .content-col,
+  .sidebar-col {
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .hero-content h1 {
