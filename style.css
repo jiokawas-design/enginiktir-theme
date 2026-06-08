@@ -117,7 +117,7 @@ body {
 /* Mobile logo styles (only used at mobile breakpoint) */
 .logo-name {
   font-family: 'Comfortaa', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.1px;
   text-shadow: 0.5px 0 0 var(--text), -0.5px 0 0 var(--text);
