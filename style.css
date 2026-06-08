@@ -106,7 +106,7 @@ body {
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   flex-shrink: 0;
   margin-right: 79px;
 }
