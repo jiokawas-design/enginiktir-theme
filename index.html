@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260608g" />
+  <link rel="stylesheet" href="style.css?v=20260608h" />
 </head>
 <body>
 
@@ -414,11 +414,17 @@
       var lastY = window.scrollY;
       var hidden = false;
 
+      document.body.style.transition = 'padding-top 0.32s ease';
+
       function setBodyPadding() {
         document.body.style.paddingTop = header.offsetHeight + 'px';
       }
       setBodyPadding();
-      window.addEventListener('resize', setBodyPadding);
+      window.addEventListener('resize', function () {
+        hidden = false;
+        header.style.transform = 'translateY(0)';
+        setBodyPadding();
+      });
 
       window.addEventListener('scroll', function () {
         var y = window.scrollY;
@@ -427,11 +433,14 @@
         if (Math.abs(delta) < 6) return;
 
         var topbarBottom = topbar.offsetTop + topbar.offsetHeight;
+        var navHeight = header.offsetHeight - topbarBottom;
         if (delta > 0 && y > topbarBottom && !hidden) {
           header.style.transform = 'translateY(-' + topbarBottom + 'px)';
+          document.body.style.paddingTop = Math.max(0, navHeight) + 'px';
           hidden = true;
         } else if (delta < 0 && hidden) {
           header.style.transform = 'translateY(0)';
+          document.body.style.paddingTop = header.offsetHeight + 'px';
           hidden = false;
         }
 
