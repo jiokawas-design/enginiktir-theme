@@ -463,6 +463,12 @@ body {
   line-height: 1.7;
 }
 
+.content-col img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .btn-row {
   display: flex;
   gap: 10px;
