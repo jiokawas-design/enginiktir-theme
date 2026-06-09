@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260609g" />
+  <link rel="stylesheet" href="style.css?v=20260609h" />
 </head>
 <body>
 
@@ -416,6 +416,7 @@
       var upAccum    = 0;
       var isTouching = false;
       var isTouch    = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      var lastWidth  = window.innerWidth;
 
       function setBodyPadding() {
         document.body.style.transition = 'none';
@@ -424,9 +425,15 @@
       setBodyPadding();
 
       window.addEventListener('resize', function () {
-        hidden = false;
-        upAccum = 0;
-        header.style.transform = 'translateY(0)';
+        var newWidth = window.innerWidth;
+        if (newWidth !== lastWidth) {
+          // Real resize (orientation change etc.) — reset header fully
+          lastWidth = newWidth;
+          hidden = false;
+          upAccum = 0;
+          header.style.transform = 'translateY(0)';
+        }
+        // Always recalculate padding (header height may have changed)
         setBodyPadding();
       });
 
