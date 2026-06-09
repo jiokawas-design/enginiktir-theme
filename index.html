@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260609i" />
+  <link rel="stylesheet" href="style.css?v=20260609j" />
 </head>
 <body>
 
@@ -418,19 +418,9 @@
       var isTouch    = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
       var lastWidth  = window.innerWidth;
 
-      function calcTopbarBottom() {
-        var borderTop = parseInt(window.getComputedStyle(header).borderTopWidth) || 0;
-        return topbar.offsetTop + topbar.offsetHeight + borderTop;
-      }
-
       function setBodyPadding() {
         document.body.style.transition = 'none';
-        if (hidden) {
-          var navH = Math.max(0, header.offsetHeight - calcTopbarBottom());
-          document.body.style.paddingTop = navH + 'px';
-        } else {
-          document.body.style.paddingTop = header.offsetHeight + 'px';
-        }
+        document.body.style.paddingTop = header.offsetHeight + 'px';
       }
       setBodyPadding();
 
@@ -464,14 +454,21 @@
 
         var borderTop    = parseInt(window.getComputedStyle(header).borderTopWidth) || 0;
         var topbarBottom = topbar.offsetTop + topbar.offsetHeight + borderTop;
-        var navHeight    = Math.max(0, header.offsetHeight - topbarBottom);
+
+        // Force-reveal when back near top (safety: avoids padding gap)
+        if (hidden && y < 10) {
+          header.style.transform = 'translateY(0)';
+          document.body.style.transition = 'none';
+          setBodyPadding();
+          hidden = false; upAccum = 0;
+          return;
+        }
 
         if (delta > 0) {
           upAccum = 0;
           if (y > topbarBottom && !hidden) {
             header.style.transform = 'translateY(-' + topbarBottom + 'px)';
-            document.body.style.transition = 'none';
-            document.body.style.paddingTop = navHeight + 'px';
+            // NO padding change on hide — content stays still, no jump
             hidden = true;
           }
         } else {
