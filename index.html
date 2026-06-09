@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260609a" />
+  <link rel="stylesheet" href="style.css?v=20260609b" />
 </head>
 <body>
 
@@ -411,8 +411,9 @@
     (function () {
       var header = document.querySelector('.site-header');
       var topbar = document.querySelector('.topbar');
-      var lastY = window.scrollY;
-      var hidden = false;
+      var lastY    = window.scrollY;
+      var hidden   = false;
+      var upAccum  = 0;
 
       function setBodyPadding() {
         document.body.style.paddingTop = header.offsetHeight + 'px';
@@ -420,32 +421,40 @@
       setBodyPadding();
       window.addEventListener('resize', function () {
         hidden = false;
+        upAccum = 0;
         header.style.transform = 'translateY(0)';
         setBodyPadding();
       });
 
       window.addEventListener('scroll', function () {
-        var y = window.scrollY;
+        var y     = window.scrollY;
         var delta = y - lastY;
-
-        if (Math.abs(delta) < 6) return;
-
-        var borderTop = parseInt(window.getComputedStyle(header).borderTopWidth) || 0;
-        var topbarBottom = topbar.offsetTop + topbar.offsetHeight + borderTop;
-        var navHeight = Math.max(0, header.offsetHeight - topbarBottom);
-        if (delta > 0 && y > topbarBottom && !hidden) {
-          header.style.transform = 'translateY(-' + topbarBottom + 'px)';
-          document.body.style.transition = 'none';
-          document.body.style.paddingTop = navHeight + 'px';
-          hidden = true;
-        } else if (delta < 0 && hidden) {
-          header.style.transform = 'translateY(0)';
-          document.body.style.transition = 'none';
-          document.body.style.paddingTop = header.offsetHeight + 'px';
-          hidden = false;
-        }
-
         lastY = y;
+
+        if (Math.abs(delta) < 2) return;
+
+        var borderTop    = parseInt(window.getComputedStyle(header).borderTopWidth) || 0;
+        var topbarBottom = topbar.offsetTop + topbar.offsetHeight + borderTop;
+        var navHeight    = Math.max(0, header.offsetHeight - topbarBottom);
+
+        if (delta > 0) {
+          upAccum = 0;
+          if (y > topbarBottom && !hidden) {
+            header.style.transform = 'translateY(-' + topbarBottom + 'px)';
+            document.body.style.transition = 'none';
+            document.body.style.paddingTop = navHeight + 'px';
+            hidden = true;
+          }
+        } else {
+          upAccum += Math.abs(delta);
+          if (hidden && upAccum >= 50) {
+            header.style.transform = 'translateY(0)';
+            document.body.style.transition = 'none';
+            document.body.style.paddingTop = header.offsetHeight + 'px';
+            hidden  = false;
+            upAccum = 0;
+          }
+        }
       }, { passive: true });
     })();
   </script>
