@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260609b" />
+  <link rel="stylesheet" href="style.css?v=20260609c" />
 </head>
 <body>
 
@@ -411,20 +411,33 @@
     (function () {
       var header = document.querySelector('.site-header');
       var topbar = document.querySelector('.topbar');
-      var lastY    = window.scrollY;
-      var hidden   = false;
-      var upAccum  = 0;
+      var lastY      = window.scrollY;
+      var hidden     = false;
+      var upAccum    = 0;
+      var isTouching = false;
+      var isTouch    = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
       function setBodyPadding() {
         document.body.style.paddingTop = header.offsetHeight + 'px';
       }
       setBodyPadding();
+
       window.addEventListener('resize', function () {
         hidden = false;
         upAccum = 0;
         header.style.transform = 'translateY(0)';
         setBodyPadding();
       });
+
+      if (isTouch) {
+        document.addEventListener('touchstart', function () {
+          isTouching = true;
+          upAccum = 0;
+        }, { passive: true });
+        document.addEventListener('touchend', function () {
+          isTouching = false;
+        }, { passive: true });
+      }
 
       window.addEventListener('scroll', function () {
         var y     = window.scrollY;
@@ -447,7 +460,9 @@
           }
         } else {
           upAccum += Math.abs(delta);
-          if (hidden && upAccum >= 50) {
+          // On touch devices only reveal while finger is on screen — blocks momentum micro-reversals
+          var canReveal = !isTouch || isTouching;
+          if (hidden && canReveal && upAccum >= 30) {
             header.style.transform = 'translateY(0)';
             document.body.style.transition = 'none';
             document.body.style.paddingTop = header.offsetHeight + 'px';
