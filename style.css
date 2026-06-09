@@ -982,6 +982,10 @@ body {
    ===================================================== */
 
 @media (max-width: 1024px) {
+  .site-header {
+    transition: transform 1.1s ease;
+  }
+
   .main-wrapper {
     display: block;
     padding: 0 16px;
